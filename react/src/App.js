@@ -8,6 +8,8 @@ import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
+import { response } from "./mock/data";
+
 import ConversionResult from "./ConversionResult";
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
   useEffect(getRates, []);
 
   function getRates() {
-    const url = `http://api.exchangeratesapi.io/v1/latest?access_key=${API_KEY}`;
+    /*const url = `http://api.exchangeratesapi.io/v1/latest?access_key=${API_KEY}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -32,7 +34,9 @@ function App() {
         setRates(dataRates.rates);
 
         setCurrencies(Object.keys(dataRates.rates));
-      });
+      });*/
+    setRates(response.rates);
+    setCurrencies(Object.keys(response.rates));
   }
 
   const getCotizacion = (currency) => rates[currency];
